@@ -2,7 +2,7 @@
 
 ## Overview
 
-A simple spring shell application to demonstrate various directory traversal strategies.
+A simple [Spring Shell](https://projects.spring.io/spring-shell/) application to demonstrate various directory traversal strategies.  The quick start guide executes a script to demostrate the various commands, but the shell is interactive and commands can be executed individually.
 
 ## Requirements
 
