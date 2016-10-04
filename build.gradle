@@ -1,0 +1,43 @@
+
+description = 'Filesystem Traversal Application'
+apply plugin: 'base'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	maven { url "http://repo.springsource.org/libs-milestone" }
+	maven { url "http://repo.springsource.org/libs-release" }
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+
+    // Logging
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    runtime "org.slf4j:jcl-over-slf4j:$slf4jVersion"
+    runtime "ch.qos.logback:logback-classic:$logbackVersion"
+
+    compile 'org.apache.commons:commons-lang3:3.4'
+
+	compile "org.springframework.shell:spring-shell:$springShellVersion"
+	testCompile "junit:junit:$junitVersion"
+}
+
+mainClassName = "org.springframework.shell.Bootstrap"
+
+defaultTasks 'installApp'
+
+run {
+    standardInput = System.in
+}
+
+task wrapper(type: Wrapper) {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '1.3'
+}
