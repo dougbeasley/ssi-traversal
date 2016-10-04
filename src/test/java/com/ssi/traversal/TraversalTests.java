@@ -44,7 +44,6 @@ public class TraversalTests {
 
         verify(mockedStrategy, times(3)).enter(any(Directory.class));
         verify(mockedReporter, times(4)).report(any(File.class), any(Integer.class));
-
     }
 
 

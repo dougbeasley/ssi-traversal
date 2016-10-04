@@ -55,6 +55,7 @@ public class TraversalCommands implements CommandMarker {
 
         Reporter reporter = (configCommands.getShowDetail()) ? new DetailReporter(pw) : new SimpleReporter(pw);
 
+        //TODO have a factory instantiate the traverser
         DirectoryTraverser runner = new DirectoryTraverser(strategy, reporter);
         runner.run(new File(path));
 
