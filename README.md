@@ -12,9 +12,9 @@ Java 8
 
 ```
 git clone https://github.com/dougbeasley/traversal.git
-cd ssi-traversal
+cd traversal
 ./gradlew
-./build/install/ssi-traversal/bin/ssi-traversal
+./build/install/traversal/bin/traversal
 
 ___________                                            .__   
 \__    _______________ ___  __ ___________ __________  |  |  
