@@ -5,7 +5,7 @@ import com.ssi.traversal.reporters.Reporter;
 import com.ssi.traversal.reporters.SimpleReporter;
 import com.ssi.traversal.traversers.BreadthFirstStrategy;
 import com.ssi.traversal.traversers.DepthFirstStrategy;
-import com.ssi.traversal.traversers.TraverseRunner;
+import com.ssi.traversal.traversers.DirectoryTraverser;
 import com.ssi.traversal.traversers.TraverseStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.core.CommandMarker;
@@ -55,8 +55,8 @@ public class TraversalCommands implements CommandMarker {
 
         Reporter reporter = (configCommands.getShowDetail()) ? new DetailReporter(pw) : new SimpleReporter(pw);
 
-        TraverseRunner runner = new TraverseRunner(strategy, reporter);
-        runner.run(path);
+        DirectoryTraverser runner = new DirectoryTraverser(strategy, reporter);
+        runner.run(new File(path));
 
         return "Traversed = [" + path + "]";
     }

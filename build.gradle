@@ -16,6 +16,7 @@ repositories {
 	mavenCentral()
 }
 
+
 dependencies {
 
     // Logging
@@ -27,6 +28,7 @@ dependencies {
 
 	compile "org.springframework.shell:spring-shell:$springShellVersion"
 	testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-core:1.+"
 }
 
 mainClassName = "org.springframework.shell.Bootstrap"

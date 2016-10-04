@@ -1,15 +1,11 @@
 package com.ssi.traversal.traversers;
 
-/**
- * Created by dbeasley on 10/3/16.
- */
-public class BreadthFirstStrategy extends AbstractTraverseStrategy {
 
+public class BreadthFirstStrategy<E> extends AbstractTraverseStrategy<E> {
 
     @Override
-    public boolean enter(DirNode dir) {
-        return this.list.offerLast(dir);
+    public boolean enter(E e) {
+        return this.list.offerLast(e);
     }
-
 
 }

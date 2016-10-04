@@ -3,20 +3,20 @@ package com.ssi.traversal.traversers;
 
 import java.util.LinkedList;
 
-public abstract class AbstractTraverseStrategy implements TraverseStrategy {
+public abstract class AbstractTraverseStrategy<E> implements TraverseStrategy<E> {
 
 
-    protected LinkedList<DirNode> list;
+    protected LinkedList<E> list;
 
     public AbstractTraverseStrategy() {
-        this.list = new LinkedList<DirNode>();
+        this.list = new LinkedList<E>();
     }
 
-    public DirNode leave() {
+    public E leave() {
         return this.list.pollFirst();
     }
 
-    public DirNode peek() {
+    public E peek() {
         return this.list.peekFirst();
     }
 

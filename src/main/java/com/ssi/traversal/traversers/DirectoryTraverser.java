@@ -6,27 +6,27 @@ import java.io.File;
 import java.util.Arrays;
 
 
-public class TraverseRunner {
+public class DirectoryTraverser {
 
-    private final TraverseStrategy traverser;
+    private final TraverseStrategy<Directory> strategy;
     private final Reporter reporter;
 
 
-    public TraverseRunner(TraverseStrategy traverser, Reporter reporter) {
-        this.traverser = traverser;
+    public DirectoryTraverser(TraverseStrategy strategy, Reporter reporter) {
+        this.strategy = strategy;
         this.reporter = reporter;
     }
 
-    public void run(String rootPath) {
-        this.traverser.enter(new DirNode(new File(rootPath), 0));
+    public void run(File root) {
+        this.strategy.enter(new Directory(root, 0));
 
-        while(this.traverser.peek() != null) {
-            traverse(this.traverser);
+        while(this.strategy.peek() != null) {
+            traverse(this.strategy);
         }
     }
 
     protected void traverse(TraverseStrategy traverser) {
-        DirNode dir = traverser.leave();
+        Directory dir = strategy.leave();
 
         reporter.report(dir.getFile(), dir.getDepth());
 
@@ -34,13 +34,13 @@ public class TraverseRunner {
         if(files != null) {
             Arrays.stream(files).forEach((file) -> {
                 if (file.isDirectory()) {
-                    traverser.enter(new DirNode(file, dir.getDepth() + 1));
+                    traverser.enter(new Directory(file, dir.getDepth() + 1));
                 } else {
                     reporter.report(file, dir.getDepth());
                 }
             });
         } else {
-            reporter.error(dir.getFile(), "Not accessable");
+            reporter.error(dir.getFile(), "Not accessible!");
         }
     }
 

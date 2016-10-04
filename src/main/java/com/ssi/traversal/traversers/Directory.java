@@ -5,12 +5,12 @@ import java.io.File;
 /**
  * Created by dbeasley on 10/3/16.
  */
-public class DirNode {
+public class Directory {
 
     private final File file;
     private final int depth;
 
-    public DirNode(File file, int depth) {
+    public Directory(File file, int depth) {
         this.file = file;
         this.depth = depth;
     }
