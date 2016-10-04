@@ -21,12 +21,11 @@ public class DirectoryTraverser {
         this.strategy.enter(new Directory(root, 0));
 
         while(this.strategy.peek() != null) {
-            traverse(this.strategy);
+            traverse(this.strategy.leave());
         }
     }
 
-    protected void traverse(TraverseStrategy traverser) {
-        Directory dir = strategy.leave();
+    protected void traverse(Directory dir) {
 
         reporter.report(dir.getFile(), dir.getDepth());
 
@@ -34,7 +33,7 @@ public class DirectoryTraverser {
         if(files != null) {
             Arrays.stream(files).forEach((file) -> {
                 if (file.isDirectory()) {
-                    traverser.enter(new Directory(file, dir.getDepth() + 1));
+                    strategy.enter(new Directory(file, dir.getDepth() + 1));
                 } else {
                     reporter.report(file, dir.getDepth());
                 }

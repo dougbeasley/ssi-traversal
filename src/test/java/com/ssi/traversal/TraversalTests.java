@@ -31,15 +31,19 @@ public class TraversalTests {
         TraverseStrategy mockedStrategy = mock(TraverseStrategy.class);
         Reporter mockedReporter = mock(Reporter.class);
 
-        File root = testFolder.getRoot();
+        Directory root = new Directory(testFolder.getRoot(), 0);
         File x = testFolder.newFile("x");
-        File a = testFolder.newFolder("a");
-        File b = testFolder.newFolder("b");
+        Directory a = new Directory(testFolder.newFolder("a"), 1);
+        Directory b = new Directory(testFolder.newFolder("b"), 1);
+
+        when(mockedStrategy.peek()).thenReturn(root).thenReturn(a).thenReturn(b).thenReturn(null);
+        when(mockedStrategy.leave()).thenReturn(root).thenReturn(a).thenReturn(b).thenReturn(null);
 
         DirectoryTraverser dt = new DirectoryTraverser(mockedStrategy, mockedReporter);
-        dt.run(root);
+        dt.run(testFolder.getRoot());
 
         verify(mockedStrategy, times(3)).enter(any(Directory.class));
+        verify(mockedReporter, times(4)).report(any(File.class), any(Integer.class));
 
     }
 

@@ -1,0 +1,10 @@
+
+# Simple test script
+set type breadth
+traverse
+set type depth
+traverse
+set detail true
+traverse
+set detail false
+traverse
