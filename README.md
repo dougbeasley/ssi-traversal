@@ -11,7 +11,7 @@ Java 8
 ## Quick Start
 
 ```
-git clone https://github.com/dougbeasley/ssi-traversal.git
+git clone https://github.com/dougbeasley/traversal.git
 cd ssi-traversal
 ./gradlew
 ./build/install/ssi-traversal/bin/ssi-traversal
